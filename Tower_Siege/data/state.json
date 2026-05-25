@@ -1,0 +1,7 @@
+{
+  "recommended_tile": {"x": 2, "y": 2},
+  "optimal_path": [],
+  "enemy_positions": [
+    {"x": 0, "y": 0}
+  ]
+}
