@@ -1,14 +1,12 @@
-// Team 12
-// Variant: Tower Siege
-// Students: Ana Pérez, Luis Gómez
-
+/*
+ JSON file helper functions for Tower Siege.
+ Uses simple text parsing for engine input and output.
+*/
 #include "JsonIO.h"
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 #include <cctype>
-
-namespace tower_siege {
 
 static bool parseIntValue(const std::string& source, const std::string& key, int& output) {
     std::size_t pos = source.find(key);
@@ -185,4 +183,3 @@ bool writeGameStateToFile(const std::string& path, const GameState& state) {
     return writeFileText(path, content);
 }
 
-} // namespace tower_siege
