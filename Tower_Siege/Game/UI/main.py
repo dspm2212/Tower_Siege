@@ -1,11 +1,20 @@
-# Team 12
-# Variant: Tower Siege
-# Students: Ana P�rez, Luis G�mez
+"""
+Tower Siege UI module.
+Renders the grid, towers, castle, enemies, and path.
+"""
+"""
+UI main module (Pygame)
+------------------------
+Renderiza la cuadrícula 8x8, permite colocar torres con el ratón
+y muestra la recomendación del algoritmo greedy y el camino óptimo.
 
+Comunica con el motor mediante archivos JSON usando `bridge.py`.
+"""
 import os
 import pygame
-from bridge import load_input, save_input, load_state, run_engine
+from bridge import load_input, save_input, save_state, load_state, run_engine
 
+# Constantes de la interfaz
 GRID_SIZE = 8
 CELL_SIZE = 70
 MARGIN = 2
@@ -40,10 +49,14 @@ def create_default_state():
 
 
 def load_or_create_files():
-    if not os.path.exists(os.path.join(os.path.dirname(__file__), "..", "..", "data", "input.json")):
+    """Asegura que existan `input.json` y `state.json`. Devuelve (input, state)."""
+    base = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    input_path = os.path.join(base, "data", "input.json")
+    state_path = os.path.join(base, "data", "state.json")
+    if not os.path.exists(input_path):
         save_input(create_default_input())
-    if not os.path.exists(os.path.join(os.path.dirname(__file__), "..", "..", "data", "state.json")):
-        save_input(create_default_input())
+    if not os.path.exists(state_path):
+        save_state(create_default_state())
     return load_input(), load_state()
 
 

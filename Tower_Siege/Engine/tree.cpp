@@ -1,13 +1,57 @@
-// Team 12
-// Variant: Tower Siege
-// Students: Ana PÈrez, Luis GÛmez
+/*
+ Tower BST implementation.
+/*
+ tree.cpp
+ --------
+ Implementaci√≥n de las funciones declaradas en `BSTree.h`.
+ Mantiene operaciones b√°sicas: constructor, destructor,
+ inserci√≥n, recorrido in-order y limpieza de memoria.
+*/
 
 #include "BSTree.h"
-
-namespace tower_siege {
+#include <vector>
 
 TowerTree::TowerTree()
     : root(nullptr) {}
+
+TowerTree::~TowerTree() {
+    clear();
+}
+
+void TowerTree::insert(const Tower& t) {
+    insertNode(root, t);
+}
+
+std::vector<Tower> TowerTree::toVector() const {
+    std::vector<Tower> out;
+    gather(root, out);
+    return out;
+}
+
+void TowerTree::clear() {
+    clearNode(root);
+    root = nullptr;
+}
+
+void TowerTree::insertNode(TowerNode*& node, const Tower& t) {
+    if (!node) { node = new TowerNode(t); return; }
+    if (t.power < node->data.power) insertNode(node->left, t);
+    else insertNode(node->right, t);
+}
+
+void TowerTree::gather(TowerNode* node, std::vector<Tower>& out) const {
+    if (!node) return;
+    gather(node->left, out);
+    out.push_back(node->data);
+    gather(node->right, out);
+}
+
+void TowerTree::clearNode(TowerNode* node) {
+    if (!node) return;
+    clearNode(node->left);
+    clearNode(node->right);
+    delete node;
+}
 
 TowerTree::~TowerTree() {
     clear();

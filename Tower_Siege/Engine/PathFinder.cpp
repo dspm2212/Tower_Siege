@@ -1,12 +1,9 @@
-// Team 12
-// Variant: Tower Siege
-// Students: Ana Pérez, Luis Gómez
-
+/*
+ Pathfinding and greedy recommendation algorithms.
+*/
 #include "PathFinder.h"
 #include <algorithm>
 #include <cmath>
-
-namespace tower_siege {
 
 static bool isTowerAt(const std::vector<Tower>& towers, int x, int y) {
     for (const Tower& tower : towers) {
@@ -134,4 +131,3 @@ Position findGreedyRecommendation(
     return bestTile;
 }
 
-} // namespace tower_siege

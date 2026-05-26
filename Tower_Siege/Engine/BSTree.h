@@ -1,7 +1,7 @@
-// Team 12
-// Variant: Tower Siege
-// Students: Daniel Perez
-
+/*
+ Binary search tree for towers ordered by attack power.
+ Manual BST implementation without std::map or std::set.
+*/
 #ifndef TOWER_SIEGE_BSTREE_H
 #define TOWER_SIEGE_BSTREE_H
 
@@ -20,19 +20,42 @@ struct TowerNode {
 class TowerTree {
 public:
     TowerTree();
-    ~TowerTree();
+    #ifndef TOWER_SIEGE_BSTREE_H
+    #define TOWER_SIEGE_BSTREE_H
 
-    void insert(const Tower& tower);
-    std::vector<Tower> toVector() const;
-    void clear();
+    #include "GameTypes.h"
+    #include <vector>
 
-private:
-    TowerNode* root;
-    void insertNode(TowerNode*& node, const Tower& tower);
-    void gatherSorted(TowerNode* node, std::vector<Tower>& output) const;
-    void clearNode(TowerNode* node);
-};
+    /*
+     BSTree.h
+     -------
+     Árbol binario de búsqueda simple para almacenar torres
+     ordenadas por potencia (`power`). Implementación mínima
+     separada entre interfaz y fuente (`tree.cpp`).
+    */
 
-} // namespace tower_siege
+    struct TowerNode {
+        Tower data;
+        TowerNode* left;
+        TowerNode* right;
+        TowerNode(const Tower& t) : data(t), left(nullptr), right(nullptr) {}
+    };
 
-#endif // TOWER_SIEGE_BSTREE_H
+    class TowerTree {
+    public:
+        TowerTree();
+        ~TowerTree();
+        /* Inserta una torre en el árbol (por potencia) */
+        void insert(const Tower& t);
+        /* Recorre en-order y devuelve vector ordenado */
+        std::vector<Tower> toVector() const;
+        /* Libera toda la memoria del árbol */
+        void clear();
+    private:
+        TowerNode* root;
+        void insertNode(TowerNode*& node, const Tower& t);
+        void gather(TowerNode* node, std::vector<Tower>& out) const;
+        void clearNode(TowerNode* node);
+    };
+
+    #endif // TOWER_SIEGE_BSTREE_H

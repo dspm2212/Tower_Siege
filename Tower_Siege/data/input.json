@@ -1,8 +1,0 @@
-{
-  "grid_size": 8,
-  "castle": {"x": 7, "y": 7},
-  "towers": [],
-  "enemies": [
-    {"id": 1, "x": 0, "y": 0, "hp": 100}
-  ]
-}
