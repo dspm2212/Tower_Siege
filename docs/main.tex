@@ -78,8 +78,9 @@
 \setlength{\headheight}{14pt}
 
 % ---- References and links ---------------------------------------------------
+\usepackage{csquotes}   % required by biblatex when babel is loaded
 \usepackage[
-  backend=bibtex,
+  backend=biber,
   style=ieee,
   sorting=none
 ]{biblatex}
@@ -140,18 +141,10 @@ remediation is proposed as future work.
 \newpage
 
 % ---- Table of Contents ------------------------------------------------------
-\cleardoublepage
-\phantomsection
 \tableofcontents
-\cleardoublepage
-
-% ---- List of Figures --------------------------------------------------------
-\phantomsection
-\listoffigures
-\cleardoublepage
+\newpage
 
 % =============================================================================
-\phantomsection
 \chapter{Introduction}
 \label{ch:introduction}
 % =============================================================================
@@ -198,8 +191,6 @@ Greedy–Backtracking interaction bug; and Chapter~\ref{ch:conclusion} summarise
 findings and proposes future work.
 
 % =============================================================================
-\cleardoublepage
-\phantomsection
 \chapter{Literature Review}
 \label{ch:litreview}
 % =============================================================================
@@ -249,8 +240,6 @@ that prohibit the use of STL equivalents such as \texttt{std::list} or
 \texttt{std::map}.
 
 % =============================================================================
-\cleardoublepage
-\phantomsection
 \chapter{Objectives}
 \label{ch:objectives}
 % =============================================================================
@@ -285,8 +274,6 @@ interactive context.
 \end{enumerate}
 
 % =============================================================================
-\cleardoublepage
-\phantomsection
 \chapter{Scope}
 \label{ch:scope}
 % =============================================================================
@@ -311,8 +298,6 @@ The project encompasses:
 
 
 % =============================================================================
-\cleardoublepage
-\phantomsection
 \chapter{Assumptions}
 \label{ch:assumptions}
 % =============================================================================
@@ -337,8 +322,6 @@ The project encompasses:
 \end{enumerate}
 
 % =============================================================================
-\cleardoublepage
-\phantomsection
 \chapter{Limitations}
 \label{ch:limitations}
 % =============================================================================
@@ -374,8 +357,6 @@ The project encompasses:
 \end{enumerate}
 
 % =============================================================================
-\cleardoublepage
-\phantomsection
 \chapter{Methodology}
 \label{ch:methodology}
 % =============================================================================
@@ -571,8 +552,6 @@ Backtracking to compute two independent paths simultaneously.
 \end{table}
 
 % =============================================================================
-\cleardoublepage
-\phantomsection
 \chapter{Implementation \& Results}
 \label{ch:implementation}
 % =============================================================================
@@ -633,9 +612,10 @@ recommendation and Backtracking path both visible.
 Figure~\ref{fig:hud} shows the HUD panel where the BST in-order listing
 is rendered in real time.
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
-  \includegraphics[width=0.92\linewidth]{image/gameplay_level3.png}
+  \includegraphics[width=0.85\linewidth,
+                  height=0.40\textheight, keepaspectratio]{image/gameplay_level3.png}
   \caption{Gameplay screenshot. The teal cell is the Greedy-recommended
     placement; blue outlines trace the Backtracking path from the spawn
     point to the castle. The diamond outline around a tower shows its
@@ -643,9 +623,10 @@ is rendered in real time.
   \label{fig:gameplay}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
   \centering
-  \includegraphics[width=0.92\linewidth]{image/hud_bst.png}
+  \includegraphics[width=0.85\linewidth,
+                  height=0.40\textheight, keepaspectratio]{image/hud_bst.png}
   \caption{HUD panel. The ``BST by power'' list displays towers in
     ascending \texttt{attack\_power} order, directly demonstrating the
     BST in-order traversal property at runtime regardless of placement
@@ -706,8 +687,6 @@ Accept.& Path-block prevention     & Tower that would seal spawn rejected by \te
 \end{table}
 
 % =============================================================================
-\cleardoublepage
-\phantomsection
 \chapter{Discussion}
 \label{ch:discussion}
 % =============================================================================
@@ -816,8 +795,6 @@ The linked list showed constant-time append and acceptably linear removal for
 wave sizes up to 10 enemies, consistent with the $O(n)$ theoretical bound.
 
 % =============================================================================
-\cleardoublepage
-\phantomsection
 \chapter{Conclusion}
 \label{ch:conclusion}
 % =============================================================================
